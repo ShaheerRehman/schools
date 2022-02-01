@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body_block %}
+    <div class="container py-4">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+            <h3>Schools detail is as follows: </h3>
+            <hr>
+            <h4>
+                <li>Name: {{ schooldtl.name }}</li>
+            </h4>
+            <li>Principal: {{ schooldtl.principal }}</li>
+            <li>Location: {{ schooldtl.location }}</li>
+            <hr>
+            {% for student in schooldtl.students.all %}
+                <p>{{student.name}} who is {{student.age}} years old.</p>
+            {% endfor %}
+            <p></p>
+            <a class='btn btn-warning' id='rightPadBtn' href="{% url 'basic_app:update' pk=schooldtl.pk %}">Update</a>
+            <a class="btn btn-danger" id='rightPadBtn' href="{% url 'basic_app:delete' pk=schooldtl.pk %}">Delete</a>
+        </div>
+    </div>
+{% endblock body_block %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block body_block %}
+    <div class="container py-4">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+            <h3>
+            {% if not form.instance.pk %}
+                Create School
+            {% else %}
+                Update School
+            {% endif %}
+            </h3>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-6">
+                        {{ form.name|as_crispy_field }}
+                    </div>
+                    <div class="col-6">
+                        {{ form.principal|as_crispy_field }}
+                    </div>
+                </div>
+                {% if not form.instance.pk %}
+                    <p></p>
+                    {{ form.location|as_crispy_field }}
+                    <p></p>
+                    <input type="submit" class="btn btn-primary" value="Create">
+                {% else %}
+                    <p></p>
+                    <input type="submit" class="btn btn-warning" value="Update">
+                {% endif %}
+            </form>
+        </div>
+    </div>
+{% endblock body_block %}

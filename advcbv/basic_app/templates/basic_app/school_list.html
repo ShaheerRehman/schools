@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block body_block %}
+    <div class="container py-4">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+            {% if school_list %}
+            <h2>Schools list is as follows: </h2>
+            <hr>
+            {% for school in school_list %}
+                <h4><li><a href="{{ school.id }}/">{{ school.name }}</a></li></h4>
+                <p>Principal: {{ school.principal }}</p>
+                <p>Location: {{ school.location }}</p>
+                <hr>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock body_block %}
