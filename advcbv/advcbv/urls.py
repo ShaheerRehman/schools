@@ -19,6 +19,7 @@ from basic_app import views
 from django.conf import settings
 
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', views.IndexView.as_view(), name='index'),
     path('basic_app/', include('basic_app.urls')),
     
@@ -27,6 +28,5 @@ urlpatterns = [
 if settings.DEBUG:
     import debug_toolbar
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('__debug__/', include('debug_toolbar.urls')),
 ] + urlpatterns
